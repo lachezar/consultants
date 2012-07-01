@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load pagination_tags %}
+
+{% block content %}
+<nav>
+	<ul>
+		{% for l in languages %}
+		<li><a href="/{{ l|urlencode }}" {% if selected_language == l %}class="selected"{% endif %}>{{ l }}</a></li>
+		{% endfor %}
+	</ul>
+	<div class="delimiter"> </div>
+</nav>
+
+{% autopaginate users 10 %}
+{% for u in users %}
+<article>
+	<h3>
+		<a href="https://github.com/{{ u.username }}">{{ u.username }}</a>
+		{% if u.name %}<ruby >({{ u.name }})</ruby>{% endif %}
+	</h3>
+	<img src="http://gravatar.com/avatar/{{ u.gravatar_id }}" alt="{{ u.username }} photo"/>
+	<ul>
+		<li>{{ u.language }}</li>
+		<li>{{ u.location }}</li>
+		<li>{{ u.public_repo_count }} public repos</li>
+	</ul>
+	<div class="delimiter"> </div>
+</article>
+{% endfor %}
+
+{% paginate %}
+
+{% endblock %}
