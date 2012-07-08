@@ -1,0 +1,7 @@
+Django==1.4
+distribute==0.6.27
+dj-database-url==0.2.1
+django-extensions==0.9
+django-pagination==1.0.7
+psycopg2==2.4.5
+wsgiref==0.1.2
