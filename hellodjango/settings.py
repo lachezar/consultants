@@ -3,7 +3,7 @@
 import os
 import os.path
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -69,7 +69,7 @@ STATIC_ROOT = '/app/hellodjango/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = os.path.dirname(__file__) + '/static'
+STATIC_URL = ''
 
 # Additional locations of static files
 STATICFILES_DIRS = (
