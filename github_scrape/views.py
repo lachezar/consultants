@@ -11,7 +11,7 @@ def index(request, language=None):
         users = GithubUser.objects.all()
     else:
         users = GithubUser.objects.filter(language__iexact=language)
-    users = users.order('-public_repo_count')
+    users = users.order_by('-public_repo_count')
     languages = GithubUser.objects.values_list('language').exclude(language='').distinct().order_by('language')
     languages = map(operator.itemgetter(0), languages)
     
