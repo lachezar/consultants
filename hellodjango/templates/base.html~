@@ -11,15 +11,14 @@
 		</header>
 		<summary>
 			<h4>
-				
+				If you are missing from the list or just want to contact me - <strong>lucho870601 [le at] gmail [le dot] com</strong>
 			</h4>
 		</summary>
 		<section>
 			{% block content %}{% endblock %}
 		</section> 
 		<footer>
-			Runs on Django and eco-friendly HTML5!<br/>
-			lucho870601 [le at] gmail [le dot] com
+			Runs on Django and eco-friendly HTML5!
 		</footer>
 	</body>
 </html>
