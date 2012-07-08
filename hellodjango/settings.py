@@ -113,6 +113,7 @@ ROOT_URLCONF = 'hellodjango.urls'
 WSGI_APPLICATION = 'hellodjango.wsgi.application'
 
 TEMPLATE_DIRS = (
+	os.path.dirname(__file__) + '/templates',
 	'/apps/hellodjango/templates',
 	os.getcwd() + '/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
