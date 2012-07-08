@@ -1,0 +1,97 @@
+body {
+	font-family: 'Play', sans-serif;
+}
+
+header {
+    margin: auto;
+    text-align: center;
+    width: 400px;
+    border-bottom: 1px dotted grey
+}
+
+summary {
+	font-style: italic;
+	text-align: center;
+	padding-bottom: 12px;  
+}
+
+section {
+	width: 600px;
+	margin: 0 auto;
+}
+
+article > img, article > ul {
+	float: left;
+}
+
+article > h3 > a {
+	color: black;
+	text-decoration: none;
+	border-bottom: 1px dashed grey;
+}
+
+article > h3 > ruby {
+	font-style: italic;
+	font-size: .7em;
+}
+
+nav > ul {
+    font-size: 0.7em;
+    text-align: center;
+}
+
+nav > ul > li {
+    display: inline;
+    float: left;
+    line-height: 30px;
+    list-style-type: none;
+}
+
+nav > ul > li > a {
+	border: 1px solid grey;
+	border-radius: 15px;
+	margin: 3px;
+	padding: 5px;
+	text-decoration: none;
+	color: black;
+}
+
+nav > ul > li > a:hover, nav > ul > li > a.selected {
+	background-color: grey;
+	color: white;
+}
+
+div.delimiter {
+	text-align: center;
+	font-size: 2em;
+	clear: both;
+	margin: 25px;
+}
+
+div.delimiter:before {
+	content: "...";
+}
+
+footer {
+	color: green;
+	text-align: center;
+	font-size: .7em;
+	margin-top: 32px;
+}
+
+.pagination {
+	text-align: center;
+}
+
+a.prev, a.next, a.page {
+	color: grey;
+	text-decoration: none;
+	margin: 10px;
+	border-bottom: 1px dotted grey;
+}
+
+span.prev, span.next, span.page {
+	color: black;
+	margin: 10px;
+	font-weight: bold;
+}
