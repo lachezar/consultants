@@ -9,6 +9,12 @@ header {
     border-bottom: 1px dotted grey
 }
 
+summary {
+	font-style: italic;
+	text-align: center;
+	padding-bottom: 12px;  
+}
+
 section {
 	width: 600px;
 	margin: 0 auto;
@@ -80,13 +86,12 @@ footer {
 a.prev, a.next, a.page {
 	color: grey;
 	text-decoration: none;
-	margin: 5px;
+	margin: 10px;
 	border-bottom: 1px dotted grey;
 }
 
 span.prev, span.next, span.page {
 	color: black;
-	margin: 5px;
+	margin: 10px;
 	font-weight: bold;
 }
-

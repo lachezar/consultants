@@ -1,24 +1,9 @@
 {% extends "base.html" %}
 {% load pagination_tags %}
 
-{% block head %}
-<link href="http://fonts.googleapis.com/css?family=Play:400,700&subset=latin,latin-ext" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/list.css" />
-{% endblock %}
-
-{% block title %}
-The Swedish Github Index
-{% endblock %}
-
-{% block header %}
-The Swedish Github Index
-{% endblock %}
-
 {% block content %}
 <nav>
 	<ul>
-		<li><a href="/" {% if selected_language == None %}class="selected"{% endif %}>all</a></li>
-		<li><a href="/None" {% if selected_language == 'None' %}class="selected"{% endif %}>None</a></li>
 		{% for l in languages %}
 		<li><a href="/{{ l|urlencode }}" {% if selected_language == l %}class="selected"{% endif %}>{{ l }}</a></li>
 		{% endfor %}

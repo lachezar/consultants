@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>The Swedish Github</title>
-		<link href="http://fonts.googleapis.com/css?family=Play:400,700&subset=latin,latin-ext" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="/static/css/list.css" />
+		<title>{% block title %}{% endblock %}</title>
+		{% block head %}{% endblock %}
 	</head>
 	<body>
 		<header>
-			<h2>The Swedish Github Index</h2>
+			<h2>{% block header %}{% endblock %}</h2>
 		</header>
-		<summary>
-			<h4>
-				
-			</h4>
-		</summary>
 		<section>
 			{% block content %}{% endblock %}
 		</section> 
 		<footer>
-			Runs on Django and eco-friendly HTML5!<br/>
-			lucho870601 [le at] gmail [le dot] com
+			Runs on Django and eco-friendly HTML5!
+			<br/>
+			Created by lucho870601 [le at] gmail [le dot] com
 		</footer>
 	</body>
 </html>

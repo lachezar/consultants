@@ -9,6 +9,8 @@ import operator
 def index(request, language=None):
     if language is None:
         users = GithubUser.objects.all()
+    elif language == 'None':
+        users = GithubUser.objects.filter(language='')
     else:
         users = GithubUser.objects.filter(language__iexact=language)
     users = users.order_by('-public_repo_count')
