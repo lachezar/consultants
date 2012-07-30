@@ -23,12 +23,13 @@ def get_github_users(keyword, page):
         if keyword_lower in smart_str(u['location']).lower():
             u['github_id'] = u['id']
             del u['id']
+            print u
             github_users.append(GithubUser(**dict(filter(lambda x: x[0] in fields, u.iteritems()))))
         
     return github_users
 
 
-#@transaction.autocommit                 
+@transaction.autocommit                 
 def scrape_location(keyword):
     page = 1
     users = get_github_users(keyword, page)
