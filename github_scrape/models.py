@@ -12,5 +12,5 @@ class GithubUser(models.Model):
     repos = models.IntegerField()
     github_id = models.CharField(max_length=20, unique=True)
     followers = models.IntegerField()
-    score = models.FloatField()
+    score = models.FloatField(blank=True, null=True)
     gravatar_id = models.CharField(max_length=40, blank=True, null=True)
