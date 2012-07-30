@@ -5,3 +5,5 @@
 local_settings.py
 .project
 .pydevproject
+venv
+*.py~
