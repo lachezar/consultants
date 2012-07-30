@@ -23,7 +23,7 @@ def get_github_users(keyword, page):
         if u['location'] and keyword_lower in smart_str(u['location']).lower():
             u['github_id'] = u['id']
             del u['id']
-            print u
+            #print u
             github_users.append(GithubUser(**dict(filter(lambda x: x[0] in fields, u.iteritems()))))
         
     return github_users
@@ -36,7 +36,7 @@ def scrape_location(keyword):
     while users:
         print 'page %d, gonna save %d users' % (page, len(users))
         for u in users:
-            print u
+            print u.github_id
             if GithubUser.objects.filter(github_id=smart_str(u.github_id)).count() == 0:
                 #try:
                 u.save()
