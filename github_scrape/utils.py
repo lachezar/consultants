@@ -20,7 +20,7 @@ def get_github_users(keyword, page):
     fields = map(operator.attrgetter('name'), GithubUser._meta._fields())
     github_users = []
     for u in users:
-        if keyword_lower in smart_str(u['location']).lower():
+        if u['location'] and keyword_lower in smart_str(u['location']).lower():
             u['github_id'] = u['id']
             del u['id']
             print u
