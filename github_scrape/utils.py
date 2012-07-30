@@ -3,7 +3,7 @@
 
 from __future__ import unicode_literals
 
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 from django.utils.encoding import smart_str
 
 from models import GithubUser
@@ -38,7 +38,7 @@ def scrape_location(keyword):
                 try:
                     u.save()
                 except IntegrityError:
-                    pass
+                    transaction.rollback()
         page += 1
         users = get_github_users(keyword, page)
     
