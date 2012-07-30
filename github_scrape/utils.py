@@ -38,10 +38,10 @@ def scrape_location(keyword):
         for u in users:
             print u
             if GithubUser.objects.filter(github_id=smart_str(u.github_id)).count() == 0:
-                try:
-                    u.save()
-                except IntegrityError:
-                    pass
+                #try:
+                u.save()
+                #except IntegrityError:
+                #    pass
         page += 1
         users = get_github_users(keyword, page)
     
