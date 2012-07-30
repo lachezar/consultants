@@ -26,7 +26,9 @@ def get_github_users(keyword, page):
             github_users.append(GithubUser(**dict(filter(lambda x: x[0] in fields, u.iteritems()))))
         
     return github_users
-                 
+
+
+@transaction.autocommit                 
 def scrape_location(keyword):
     page = 1
     users = get_github_users(keyword, page)
@@ -38,9 +40,10 @@ def scrape_location(keyword):
                 try:
                     u.save()
                 except IntegrityError:
-                    transaction.rollback()
+                    pass
         page += 1
         users = get_github_users(keyword, page)
+    
     
 def scrape_sweden():
     keywords = map(smart_str, [u'Göteborg', 'Sverige', 'Sweden', 'Stockholm', u'Göteborg', 'Gothenburg',
