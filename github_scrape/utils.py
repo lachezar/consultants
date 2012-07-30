@@ -33,7 +33,8 @@ def scrape_location(keyword):
     while users:
         print 'page %d, gonna save %d users' % (page, len(users))
         for u in users:
-            if GithubUser.objects.filter(github_id=u.github_id).count() == 0:
+            print smart_str(u.github_id)
+            if GithubUser.objects.filter(github_id=smart_str(u.github_id)).count() == 0:
                 try:
                     u.save()
                 except IntegrityError:
