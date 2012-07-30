@@ -28,14 +28,14 @@ def get_github_users(keyword, page):
     return github_users
 
 
-@transaction.autocommit                 
+#@transaction.autocommit                 
 def scrape_location(keyword):
     page = 1
     users = get_github_users(keyword, page)
     while users:
         print 'page %d, gonna save %d users' % (page, len(users))
         for u in users:
-            print smart_str(u.github_id)
+            print u
             if GithubUser.objects.filter(github_id=smart_str(u.github_id)).count() == 0:
                 try:
                     u.save()
