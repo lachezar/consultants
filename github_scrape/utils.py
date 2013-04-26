@@ -11,10 +11,10 @@ import json
 import operator
 import urllib2
 
-def get_github_users(keyword, page):
+def get_github_users(keyword, page, access_token):
     keyword_lower = smart_str(keyword).lower()
-    url_base = smart_str(u'https://api.github.com/legacy/user/search/%s?start_page=%d')
-    url = url_base % (keyword, page)
+    url_base = smart_str(u'https://api.github.com/legacy/user/search/%s?start_page=%d&access_token=%s')
+    url = url_base % (keyword, page, access_token)
     fp = urllib2.urlopen(url)
     users = json.load(fp)['users']
     fields = map(operator.attrgetter('name'), GithubUser._meta._fields())
@@ -29,9 +29,9 @@ def get_github_users(keyword, page):
 
 
 @transaction.autocommit                 
-def scrape_location(keyword):
+def scrape_location(keyword, access_token):
     page = 1
-    users = get_github_users(keyword, page)
+    users = get_github_users(keyword, page, access_token)
     while users:
         print 'page %d, gonna save %d users' % (page, len(users))
         for u in users:
@@ -41,10 +41,15 @@ def scrape_location(keyword):
                 except IntegrityError:
                     pass
         page += 1
-        users = get_github_users(keyword, page)
+        users = get_github_users(keyword, page, access_token)
     
     
-def scrape_sweden():
+def scrape_sweden(access_token = ''):
+    ''' 
+    After the last change in the Github API you need to have an oauth access token
+    to perform more than 60 requests per hour.
+    '''
+
     keywords = map(smart_str, [u'Göteborg', 'Sverige', 'Sweden', 'Stockholm', u'Göteborg', 'Gothenburg',
     u'Malmö', 'Malmo', 'Uppsala', u'Västerås', u'Örebro', u'Linköping', 'Helsingborg', 
     u'Norrköping', u'Jönköping', 'Lund', u'Umeå', u'Gävle', u'Borås', u'Södertälje', u'Täby',
@@ -52,6 +57,6 @@ def scrape_sweden():
     
     for k in keywords:
         print "Trying for ", k
-        scrape_location(k)
+        scrape_location(k, access_token)
         
         
